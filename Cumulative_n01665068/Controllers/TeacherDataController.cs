@@ -131,5 +131,57 @@ namespace Cumulative_n01665068.Controllers
 
             return NewTeacher;
         }
+
+        [HttpPost]
+        public void DeleteTeacher(int id)
+        {
+            //Create an instance of the connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and the database
+            Conn.Open();
+
+            //Establish a new command 
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //Query to Execute
+            cmd.CommandText = " DELETE FROM teachers WHERE teacherid = @id ";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+
+        }
+
+        [HttpPost]
+        public void AddTeacher([FromBody] Teacher NewTeacher)
+        {
+            //Create an instance of the connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and the database
+            Conn.Open();
+
+            //Establish a new command 
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //Query to Execute
+            cmd.CommandText = " INSERT INTO teachers values (@TeacherFName, @TeacherLName, @EmpNumber, @HireDate, @Salary)";
+            cmd.Parameters.AddWithValue("@TeacherFName", NewTeacher.TeacherFName);
+            cmd.Parameters.AddWithValue("@TeacherLName", NewTeacher.TeacherLName);
+            cmd.Parameters.AddWithValue("@EmpNumber", NewTeacher.EmpNumber);
+            cmd.Parameters.AddWithValue("@HireDate", NewTeacher.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", NewTeacher.Salary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+
+        }
     }
 }

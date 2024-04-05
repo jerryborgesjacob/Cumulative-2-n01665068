@@ -13,6 +13,8 @@ namespace Cumulative_n01665068.Models
     {
             public int TeacherID;
             public string TeacherName;
+            public string TeacherFName;
+            public string TeacherLName;
             public string EmpNumber;
             public DateTime HireDate;
             public decimal Salary;

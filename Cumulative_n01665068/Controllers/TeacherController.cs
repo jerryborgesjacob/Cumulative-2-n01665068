@@ -39,5 +39,42 @@ namespace Cumulative_n01665068.Controllers
 
             return View(NewTeacher);
         }
+
+
+        public ActionResult Delete (int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            controller.DeleteTeacher(id);
+            return RedirectToAction("List");
+        }
+
+        public ActionResult DeleteConfirm(int id) 
+        {
+            TeacherDataController Controller = new TeacherDataController();
+            Teacher DelTeacher = Controller.FindTeacher(id);
+
+            return View(DelTeacher);
+        }
+
+        public ActionResult New() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create (string TeacherFName, string TeacherLName, String EmpNumber, DateTime HireDate, Decimal Salary)
+        {
+            Teacher NewTeacher = new Teacher();
+            NewTeacher.TeacherFName = TeacherFName;
+            NewTeacher.TeacherLName = TeacherLName;
+            NewTeacher.EmpNumber = EmpNumber;
+            NewTeacher.HireDate = HireDate;
+            NewTeacher.Salary = Salary;
+
+            TeacherDataController controller = new TeacherDataController();
+            controller.AddTeacher(NewTeacher);
+
+            return RedirectToAction("List");
+        }
     }
 }
