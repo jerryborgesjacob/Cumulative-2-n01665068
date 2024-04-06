@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Add a New Teacher to the List</h2>
+
+<form method="POST" action="/Teacher/Create">
+    <div class="fname">
+        <label for="FirstName"> First Name : </label>
+        <input type="text" id="TeacherFName" name="TeacherFName" class="mb-3" placeholder="First Name" />
+
+    </div>
+
+    <div class="lname">
+        <label for="LastName"> Last Name : </label>
+        <input type="text" id="TeacherLName" name="TeacherLName" class="mb-3" placeholder="Last Name" />
+
+    </div>
+
+    <div class="empNo">
+        <label for="empNo"> Employee Number : </label>
+        <input type="text" id="EmpNumber" name="EmpNumber" class="mb-3" placeholder="T123" />
+
+
+    </div>
+
+    <div class="hiredate">
+        <label for="hire"> Hire Date : </label>
+        <input type="datetime" id="hiredate" name="hiredate" class="mb-3" placeholder="YYYY-MM-DD HH:MM:SS" />
+        <!---Even though using type ="date" will give a date picker, the table in the database is in 'DATETIME' datatype. 
+            This means that using 'date' here will give default time for all new entries -->
+
+    </div>
+
+    <div class="salary">
+        <label for="salary"> Salary : </label>
+        <input type="text" id="salary" name="salary" class="mb-3" placeholder="00.00" />
+        <!-- I tried using type = "number", but it only accepts whole numbers. no decimals.-->
+
+    </div>
+
+    <button type="submit" value="Create"> Add Teacher </button>
+</form>
+

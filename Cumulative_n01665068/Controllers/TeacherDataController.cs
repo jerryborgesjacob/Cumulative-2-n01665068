@@ -132,8 +132,13 @@ namespace Cumulative_n01665068.Controllers
             return NewTeacher;
         }
 
+        /// <summary>
+        /// Connects to the Database and deletes the Teacher selected by the user. The deletion takes places using the TeacherID.
+        /// </summary>
+        /// <param name="Id">The TeacherID of the record(teacher) who will be deleted.</param>
+
         [HttpPost]
-        public void DeleteTeacher(int id)
+        public void DeleteTeacher(int Id)
         {
             //Create an instance of the connection
             MySqlConnection Conn = School.AccessDatabase();
@@ -146,7 +151,7 @@ namespace Cumulative_n01665068.Controllers
 
             //Query to Execute
             cmd.CommandText = " DELETE FROM teachers WHERE teacherid = @id ";
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id", Id);
             cmd.Prepare();
 
 
@@ -170,7 +175,7 @@ namespace Cumulative_n01665068.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //Query to Execute
-            cmd.CommandText = " INSERT INTO teachers values (@TeacherFName, @TeacherLName, @EmpNumber, @HireDate, @Salary)";
+            cmd.CommandText = " INSERT INTO teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) values (@TeacherFName, @TeacherLName, @EmpNumber, @HireDate, @Salary)";
             cmd.Parameters.AddWithValue("@TeacherFName", NewTeacher.TeacherFName);
             cmd.Parameters.AddWithValue("@TeacherLName", NewTeacher.TeacherLName);
             cmd.Parameters.AddWithValue("@EmpNumber", NewTeacher.EmpNumber);

@@ -6,10 +6,15 @@
 <!---This View Displays the list of all teachers. Any teacher's name can be clicked to view their full details-->
 <h1>Academic Faculty</h1>
 
-@foreach(var teacher in Model)
-            {
-                <div>
-                    <a href="/Teacher/Show/@teacher.TeacherID">@teacher.TeacherName</a>
-                </div>
-            }
+@foreach (var teacher in Model)
+{
+    <div class="list">
+        <a href="/Teacher/Show/@teacher.TeacherID">@teacher.TeacherName</a>
+    </div>
+
+}
+
+<div class="delete">
+    <a href="/Teacher/New"> Add a New Teacher </a>
+</div>
 

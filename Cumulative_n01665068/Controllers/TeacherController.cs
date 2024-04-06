@@ -41,17 +41,17 @@ namespace Cumulative_n01665068.Controllers
         }
 
 
-        public ActionResult Delete (int id)
+        public ActionResult Delete (int Id)
         {
             TeacherDataController controller = new TeacherDataController();
-            controller.DeleteTeacher(id);
+            controller.DeleteTeacher(Id);
             return RedirectToAction("List");
         }
 
-        public ActionResult DeleteConfirm(int id) 
+        public ActionResult DeleteConfirm(int Id) 
         {
-            TeacherDataController Controller = new TeacherDataController();
-            Teacher DelTeacher = Controller.FindTeacher(id);
+            TeacherDataController controller = new TeacherDataController();
+            Teacher DelTeacher = controller.FindTeacher(Id);
 
             return View(DelTeacher);
         }
@@ -62,7 +62,7 @@ namespace Cumulative_n01665068.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create (string TeacherFName, string TeacherLName, String EmpNumber, DateTime HireDate, Decimal Salary)
+        public ActionResult Create (string TeacherFName, string TeacherLName, string EmpNumber, DateTime HireDate, Decimal Salary)
         {
             Teacher NewTeacher = new Teacher();
             NewTeacher.TeacherFName = TeacherFName;
