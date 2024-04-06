@@ -133,37 +133,12 @@ namespace Cumulative_n01665068.Controllers
         }
 
         /// <summary>
-        /// Connects to the Database and deletes the Teacher selected by the user. The deletion takes places using the TeacherID.
+        /// Connects to the Database and inserts the details of the new user. 
+        /// Takes the values inserted by user into the form and adds it into the table in the database.
         /// </summary>
-        /// <param name="Id">The TeacherID of the record(teacher) who will be deleted.</param>
-
+        /// <param name="NewTeacher">Object that holds the values to be added to the table in the database.</param>
         [HttpPost]
-        public void DeleteTeacher(int Id)
-        {
-            //Create an instance of the connection
-            MySqlConnection Conn = School.AccessDatabase();
-
-            //Open the connection between the web server and the database
-            Conn.Open();
-
-            //Establish a new command 
-            MySqlCommand cmd = Conn.CreateCommand();
-
-            //Query to Execute
-            cmd.CommandText = " DELETE FROM teachers WHERE teacherid = @id ";
-            cmd.Parameters.AddWithValue("@id", Id);
-            cmd.Prepare();
-
-
-            cmd.ExecuteNonQuery();
-
-            Conn.Close();
-
-
-        }
-
-        [HttpPost]
-        public void AddTeacher([FromBody] Teacher NewTeacher)
+        public void AddTeacher(Teacher NewTeacher)
         {
             //Create an instance of the connection
             MySqlConnection Conn = School.AccessDatabase();
@@ -185,8 +160,40 @@ namespace Cumulative_n01665068.Controllers
 
             cmd.ExecuteNonQuery();
 
+            //Close the connection between the Database and the Web Server
             Conn.Close();
 
         }
+
+        /// <summary>
+        /// Connects to the Database and deletes the Teacher selected by the user. The deletion takes places using the TeacherID.
+        /// </summary>
+        /// <param name="Id">The TeacherID of the record(teacher) who will be deleted.</param>
+
+        [HttpPost]
+        public void DeleteTeacher(int Id)
+        {
+            //Create an instance of the connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and the database
+            Conn.Open();
+
+            //Establish a new command 
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //Query to Execute
+            cmd.CommandText = " DELETE FROM teachers WHERE teacherid = @id ";
+            cmd.Parameters.AddWithValue("@id", Id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            //Close the connection between the Database and the Web Server
+            Conn.Close();
+
+
+        }
+
     }
 }
