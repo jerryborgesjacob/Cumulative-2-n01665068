@@ -193,6 +193,36 @@ namespace Cumulative_n01665068.Controllers
             Conn.Close();
 
 
+
+        }
+
+        public void UpdateTeacher(int Id, [FromBody] Teacher TeacherRecord)
+        {
+            //Create an instance of the connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //Open the connection between the web server and the database
+            Conn.Open();
+
+            //Establish a new command 
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            //Query to Execute
+            cmd.CommandText = "UPDATE teachers SET teacherfname = @TeacherFName, teacherlname = @TeacherLName, employeenumber = @EmpNumber, hiredate = @HireDate, salary = @Salary where teacherid = @Id ";
+            cmd.Parameters.AddWithValue("@id", Id);
+            cmd.Parameters.AddWithValue("@TeacherFName", TeacherRecord.TeacherFName);
+            cmd.Parameters.AddWithValue("@TeacherLName", TeacherRecord.TeacherLName);
+            cmd.Parameters.AddWithValue("@EmpNumber", TeacherRecord.EmpNumber);
+            cmd.Parameters.AddWithValue("@HireDate", TeacherRecord.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", TeacherRecord.Salary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            //Close the connection between the Database and the Web Server
+            Conn.Close();
+
+
         }
 
     }

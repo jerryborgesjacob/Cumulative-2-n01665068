@@ -62,7 +62,7 @@ namespace Cumulative_n01665068.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create (string TeacherFName, string TeacherLName, string EmpNumber, DateTime HireDate, Decimal Salary)
+        public ActionResult Create (string TeacherFName, string TeacherLName, string EmpNumber, DateTime HireDate, decimal Salary)
         {
             Teacher NewTeacher = new Teacher();
             NewTeacher.TeacherFName = TeacherFName;
@@ -75,6 +75,30 @@ namespace Cumulative_n01665068.Controllers
             controller.AddTeacher(NewTeacher);
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult Update (int Id) 
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher SelectedTeacher = controller.FindTeacher(Id);
+            return View(SelectedTeacher);
+        }
+
+        [HttpPost]
+        public ActionResult Update (int Id, string TeacherFName, string TeacherLName, string EmpNumber, DateTime HireDate, decimal Salary)
+        {
+            Teacher TeacherRecord = new Teacher();
+            TeacherRecord.TeacherFName = TeacherFName;
+            TeacherRecord.TeacherLName = TeacherLName;
+            TeacherRecord.EmpNumber = EmpNumber;
+            TeacherRecord.HireDate = HireDate;
+            TeacherRecord.Salary = Salary;
+
+            TeacherDataController controller = new TeacherDataController();
+            controller.UpdateTeacher(Id, TeacherRecord);
+            return RedirectToAction("Show/"+Id);
+
+
         }
     }
 }

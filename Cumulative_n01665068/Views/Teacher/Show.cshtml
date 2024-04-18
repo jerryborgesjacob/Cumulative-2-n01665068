@@ -8,15 +8,21 @@
 <br />
 <div>
     <h3>@Model.TeacherName</h3>
-    
+
     <p>Started Teaching on : @Model.HireDate</p>
     <p>Teacher ID: @Model.TeacherID</p>
     <p>Employee Number: @Model.EmpNumber</p>
     <p>Current Salary (per hour): @Model.Salary</p>
 
+
+    <div class="update">
+        <a href="/Teacher/Update/@Model.TeacherID"> Update This Teacher's Records </a>
+    </div>
+
+
     <div class="delete">
         <a href="/Teacher/DeleteConfirm/@Model.TeacherID"> Delete </a>
     </div>
-    
+
 </div>
 
