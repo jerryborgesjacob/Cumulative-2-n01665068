@@ -1,4 +1,4 @@
-﻿
+﻿@model Cumulative_n01665068.Models.Teacher
 @{
     ViewBag.Title = "Update";
 }
@@ -8,31 +8,31 @@
 <form method="POST" action="/Teacher/update/@Model.TeacherID">
     <div id="fname">
         <label for="TeacherFName">First Name: </label>
-        <input type="text" id="TeacherFName" name="TeacherFName" value="@Model.TeacherFName" />
+        <input type="text" id="TeacherFName" class="mb-3" name="TeacherFName" value="@Model.TeacherFName" />
     </div>
 
     <div id="lname">
         <label for="TeacherLName">Last Name: </label>
-        <input type="text" id="TeacherLName" name="TeacherLName" value="@Model.TeacherLName" />
+        <input type="text" id="TeacherLName" class="mb-3" name="TeacherLName" value="@Model.TeacherLName" />
     </div>
 
     <div id="empno">
         <label for="EmpNumber">Employee Number: </label>
-        <input type="text" id="EmpNumber" name="EmpNumber" value="@Model.EmpNumber" />
+        <input type="text" id="EmpNumber" class="mb-3" name="EmpNumber" value="@Model.EmpNumber" />
     </div>
 
     <div id="hiredate">
         <label for="HireDate">Hire Date: </label>
-        <input type="text" id="HireDate" name="HireDate" value="@Model.HireDate" />
+        <input type="text" id="HireDate" class="mb-3" name="HireDate" value="@Model.HireDate" />
     </div>
 
     <div id="salary">
         <label for="Salary">Salary: </label>
-        <input type="text" id="Salary" name="Salary" value="@Model.Salary" />
+        <input type="text" id="Salary" class="mb-3" name="Salary" value="@Model.Salary" />
     </div>
 
-    <div id="fname">
-        
+    <div id="button">
+
         <input type="submit" id="submit" value="Update" />
     </div>
 

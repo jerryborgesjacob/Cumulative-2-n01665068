@@ -195,7 +195,12 @@ namespace Cumulative_n01665068.Controllers
 
 
         }
-
+        /// <summary>
+        /// Connects to the Database and updates the details of existing teacher. 
+        /// Takes the values inserted by user into the form and updates it into the table in the database.
+        /// </summary>
+        /// <param name="Id">The TeacherId of the teacher</param>
+        /// <param name="TeacherRecord">The object that holds the data to be updated in the table.</param>
         public void UpdateTeacher(int Id, [FromBody] Teacher TeacherRecord)
         {
             //Create an instance of the connection
